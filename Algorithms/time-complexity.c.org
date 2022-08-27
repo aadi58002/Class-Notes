@@ -1,0 +1,39 @@
+#+title: Time Complexity
+#+description: Time Complexity
+#+export_file_name: ~/Personal/Git-repos/Notes-markdown/Algorithms/time-complexity
+#+OPTIONS: tex:t
+#+STARTUP: latexpreview#+STARTUP: latexpreview
+#+author: Aditya Yadav
+
+* Algorithms
+Finite set of steps to solve a particular problem. There are many algo for some problems.
+=Main goal of algorithms is to decrease the execution time=
+* Time Complexity
+Determine efficeincy of an algorithm.
+
+Depends: Programming constants( No of comparisions, nested loops ).
+Does not Depends: Machine, Complex Quality, Language.
+
+eg. $$T(n) = 2 \(n^{3}) + 5n + 10$$
+    $$T(n) \approx 2*(n^{3})$$
+    $$T(n) \propto n^{3}$$
+
+** Order of growth
+How faster resource usage increases as size of the input increases.
+$$T(n) \propto n$$
+$$T(n) \propto n^{2}$$
+
+#+attr_html: :width 500px
+[[file:Images/time-complexity-graph.png]]
+
+O(1) < log(log(log(n))) < log(log(n)) < \sqrt(log(n)) < log(n) < log^{2}(n) < log^{3}(n) < \sqrt(n) < n < n*log(n) < n^{2} < (n^{2})*log(n) < n^{3} < 2^{n} < n*(2^{n}) < 3^{n} < n! < n^{n} < 2^{2^{n}}
+** Asymptotic notation
+#+attr_html: :width 800px
+[[file:Images/notation.png]]
+*** Big / Tight
+O (Upper bound) -> Worst Case
+ꭥ (Lower bound) -> Best Case
+θ -> Avg Case
+*** Small / Loose / Not-Tight
+o -> Best Case
+ω -> Best Case

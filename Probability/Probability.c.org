@@ -1,0 +1,213 @@
+#+title: Probability
+#+description: description
+#+export_file_name: ~/Personal/Git-repos/Notes-markdown/Probability/Probability
+#+author: Aditya Yadav
+
+* Table of Content :toc:noexport:
+- [[#probability][Probability]]
+  - [[#sample-space][Sample space]]
+  - [[#event][Event]]
+  - [[#condition-probability][Condition probability]]
+  - [[#representation][Representation]]
+  - [[#properties][Properties]]
+  - [[#rules][Rules]]
+- [[#question][Question]]
+  - [[#question-1][Question 1]]
+  - [[#question-2][Question 2]]
+  - [[#question-3][Question 3]]
+  - [[#question-4][Question 4]]
+  - [[#question-5][Question 5]]
+  - [[#question-6][Question 6]]
+  - [[#question-7][Question 7]]
+  - [[#question-8][Question 8]]
+  - [[#question-9][Question 9]]
+  - [[#question-10][Question 10]]
+
+* Probability
+** Sample space
+It is the set of all the possible outcomes
+Eg -
+*** Statement method ( physically writing all the outcomes )
+1. coin toss = { H, T }
+2. Dice = { 1, 2, 3, 4, 5, 6 }
+*** Point on the Circle circumeference
+Circle = $$x^{2} + y^{2} = c^{2}$$
+Points inside the circle = S { (x,y) | $$x^{2} + y^{2} < c^{2}$$ }
+Points on boundary = S { (x,y) | $$x^{2} + y^{2} = c^{2}$$ }
+** Event
+It is a subset of the sample space.
+Eg -
+Let there be a large stock of light Bulbs. Now we select 3 bulbs at random to see if they are Defective (D) or Non Defective (N)
+Sample space = { DDD, DDN , DND , NDD , DNN , NDN , NND , NNN }
+Let our event be to have minimum 2 Defective items = E { DDD , DDN , DND , NDD }
+*** Mutually Exculsive
+Events which does not have any common elements in them are known as Mutually Exculsive events.
+*** Independent Events
+Events which do not affect the output of other event.
+** Condition probability
+A given B has already occurred.
+P(A | B) = P(A ∩ B)/P(B) (Here P(B) > 0)
+** Representation
+*** Venn Diagram
+Diagrammatic represenataion of the relationship between the events & sample space.
+#+attr_html: :width 400px
+[[file:Images/venn-diagram.png]]
+** Properties
+*** Additive property
+P(A ∪ B) = P(A) + P(B) - P(A ∩ B)
+*** Multiplication property
+from the Condition probability Equation
+By moving P(B) to the other side of the equation
+P(A|B) \times P(B) = p(A ∩ B)
+- If the events are Independent Event
+** Rules
+*** Total probability
+[[https://www.geeksforgeeks.org/mathematics-law-of-total-probability/][Mathematics | Law of total probability - GeeksforGeeks]]
+*** Bayer's Rule
+[[https://www.geeksforgeeks.org/bayes-theorem/][Bayes' Theorem - GeeksforGeeks]]
+*** Random Variables
+[[https://www.geeksforgeeks.org/random-variable/][Mathematics | Random Variables - GeeksforGeeks]]
+*** Probability Dstribution
+[[https://www.geeksforgeeks.org/mathematics-probability-distributions-set-1/][Mathematics | Probability Distributions Set 1 (Uniform Distribution) - Geeksf...]]
+**** Discrete proability distributions
+f(x) = P( X = Z )
+(i) f(x) >= 0 ∀ x
+(ii) Σ f(x) = 1
+**** Contiuous proability distributions
+$$f(x) \ge 0$$
+
+$$\int_{-\infty}^{\infty} (f(x) \times dx) = 1$$
+
+$$P(a<X<b)=\int_{a}^{b} (f(x) \times dx)$$
+#+attr_html: :width 400px
+[[file:Images/graph.png]]
+**** Cumulative proability distributions
+**** Marginal proability distributions
+**** Conditional proability distributions
+**** Statistical proability distributions
+* Question
+** Question 1
+Find the errors in the following statements?
+1. The probability is that the automobile's sales person will sell 0 1 2 or 3 cars on any given day in feb are respectively - 0.19 0.38 0.29 0.15?
+   -> Error here is that the sum of the probability is greater than 1. It is 1.01.
+2. The probability that it will rain is 0.40 and the probability it will not rain is 0.50 ?
+   -> Not possible as the sum of complementary condition is not 1.
+3. The probability is that a printer will make 0 1 2 3 4 or more mistakes in setting a document are respectively 0.19 0.34 -0.25 0.43 and 0.29?
+   -> Probability can't be negative.
+4. On a single draw from a deck of playing cards the probability of selecting a heart is 0.25, the probability of selecting a black card is 0.50 and the probability of selecting both heart and black card is 0.125?
+   -> Here the additive rules fails as the P(Black ∪ Heart) != P(Black) + P(Heart) + P(Black ∩ Heart)
+5. The likely location of a mobile device in a house is as follows - adult Bed room -> 0.03 ,  Child Bed room -> 0.15 , Other Bed room -> 0.14 , Office -> 0.40 , Other Rooms -> 0.28.
+   + What is the probability that the device is in the bed room ->  (0.03 + 0.15 + 0.14) = 0.32
+   + What is the probability that the device is not in the bed room -> 1 - 0.32 -> 0.68
+   + Suppose a household is selected at random with mobile device. what is the room will you expect to find the mobile device -> Office as it has the higest probability of all other options.
+** Question 2
+A random sample of 200 adult are classfied by their gender and there level of ediction attained.
+|------------+------+--------|
+| Education  | Male | Female |
+|------------+------+--------|
+| Elementary |   38 |     45 |
+| Secondary  |   28 |     50 |
+| College    |   22 |     17 |
+|------------+------+--------|
++ If a person is picked at random from this group . What is the probability that person is male given that the person has secondary eduction?
+  -> 28/78
++ The person does not have a college degree given that the person is a female.
+  -> 95/161
+** Question 3
+A box contains 500 envelops of which 50 contain 100 Ruppees in cash , 150 contains 25 Ruppees is cash , 300 contains 10 Ruppees in cash. A envelop can be purchased for 25 Ruppees.
++ What is the probability that the first envelop purchased contains less than 100 Ruppees?
+  => 450/500
+** Question 4
+In a certain region of a country it is known from past expience that the probability of selecting a adult over 40 years of age with cancer is 0.05 . If the probability of a doctor correctly diagnosea person with cancer
+with having the disease if 0.78 and the probability of incorrctly diagnosaing a person without cancer as having the disease 0.06.
++ What is the probability that an adult over 40 years of age is diagnosed as having cancer?
+  P(A) -> event that the adult has cancer = 0.05
+  P(A') { adult being without cancer } = 0.95
+  P(B) -> Person is diagnosed with cancer = 0.78
+  p(B | A) = 0.78 { Person with cancer is diagnosed correctly with cancer } = P(B ∩ A) / P(A) = 0.78 -> P(B ∩ A) = 0.78 * 0.05
+  p(B | A') = 0.06 { Person with cancer is diagnosed correctly with cancer } = P(B ∩ A') / P(A') = 0.06 -> P(B ∩ A') = 0.06 * 0.95
+  P(B) = P(B ∩ A) + P(B ∩ A') = 0.78 * 0.05 + 0.06 * 0.95
++ What is the probability that a person diagnosed as having cancer actually have the disease?   {Random Variables}
+  P( A | B ) = P(A ∩ B)/P(B) = ( P(A) * P(B | A) )/( P(B) ) = (0.05 * 0.78)/(0.75 * 0.05 + 0.06 * 0.95)
+** Question 5
+Classify the following random variables as discrete or continous?
++ X: No. of accidents per year on a express way -> Discrete
++ Y: length of time to play 18 holes of golf -> continous
++ M: the amount of milk produced by a cow yearly -> continous
++ N: No of eggs made by hen each month -> Discrete
++ P: No of building permits issued each month in a city -> Discrete
++ Q: Weight of grain produced per ache -> continous
+** Question 6
+Let W be a random variable giving the no of heads - no of tails in 3 Tosses of a coin . list the elements of the sample space and assign values to the outcome.
+_Coins_  _W_
+HHH -> 3
+HHT -> 1
+HTH -> 1
+THH -> 1
+HTT -> -1
+TTH -> -1
+THT -> -1
+TTT -> -3
+** Question 7
+Determine the value of 'c' for the following function so that they can be considered as a probability distributions of a discrete random variable.
+=NOTE:  Comb (3 | x) = {3}^C_{x}=
+a) f(x) = c(x^{2}+4), x = 0,1,2
+   f(x) >= 0
+   Σ f(x) = 1 = c(4) + c(5) + c(8), c = 1/17
+b) f(x) = c * Comb ( 3 | x ) * Comb ( 3 | 3-x ) = 1
+          c * ((Comb ( 3 | 0 ) * Comb ( 3 | 3 )) * (Comb ( 3 | 1 ) * Comb ( 3 | 2 )) * (Comb ( 3 | 2 ) * Comb ( 3 | 1 )))
+          c * (1 + 9 + 9) = 1
+          c = 1/19
+** Question 8
+Total number of hours in units of hundred hours that a family runs a vaccum cleaner over a period of
+one year is a continous random variable X. That has the density function
+f(x) = {0 , ∀ 0 < x < 1}
+f(x) = {2-x , ∀ 1 <= x < 2}
+f(x) = {0 , elsewhere}
+find the proability that over the period of one year the family runs there vaccum cleaner
+=NOTE: \int ( -\infty | \infty ) ( f(x)dx ) = {-\infty}_\int^{\infty}= (f(x)dx)
+=NOTE:  f(x) ( -1 | 1 ) = f(-1) - f(1)=
+a) less than 120 hours
+   \int ( - \infty | 1.2 ) (f(x)dx) = \int ( - \infty | 0 ) (f(x)dx) + \int ( 0 | 1 ) (f(x)dx) + \int ( 1 | 1.2 ) (f(x)dx)
+                            = 0 + \int ( 0 | 1 ) (xdx) + \int ( 0 | 1 ) ((2-x)dx)
+                            = \int ( 0 | 1 ) (xdx) + \int ( 0 | 1 ) ((2-x)dx)
+                            = ( x^{2}/2 ) (1 | 0)
+b) between 50 & 100 hours
+** Question 9
+The proability distribution of x the number of imperfection per 10m of a synthetic fabric in continous rolls of uniform width is given as :
+|------+------+------+------+------+------|
+| x    |    0 |    1 |    2 |    3 |    4 |
+|------+------+------+------+------+------|
+| f(x) | 0.41 | 0.37 | 0.16 | 0.05 | 0.01 |
+|------+------+------+------+------+------|
+Construct a commulative probability distribution of x?
+Here the random variable is discrete
+F(x) = P(X <= x) = Σ P(X<=x) (t<=x)
+
+F(x) = 0      ( ∀ x <= 0 )
+F(x) = 0.41   ( ∀ 0 <= x <= 1 )
+F(x) = 0.78   ( ∀ 1 <= x <= 2 )
+F(x) = 0.91   ( ∀ 2 <= x <= 3 )
+F(x) = 0.99   ( ∀ 3 <= x <= 4 )
+F(x) = 1  ( ∀ x >= 4 )
+** Question 10
+Consider the density function
+\begin{equation}
+f(x) = ( 2\sqrt{x} ( ∀ 0<x<1 ) | 0 , elsewhere)
+\end{equation}
+(i) Evaluate k.
+ \int ( - \infty | \infty )f(x)dx = 1 = \int ( 0 | 1 ) ( k x^{1/2} dx)
+                         = k * ((x^{3/2})/(3/2)) ( 1 | 0 )
+                         = (2k)/3 = 1
+                         =k = 1.5=
+
+(ii) Find F(x) and use it P(0.3 < X < 0.6)
+F(x) = \int ( - \infty | x ) (f(t)dt) = \int ( 0 | x ) ( 3/2 t^{1/2} dt )
+                              = 3/2 ((t^{3/2})/(3/2)) ( 0 | x )
+
+F(x) = 0 (∀ x < 0)
+F(x) = x^{3/2}  (∀ 0 <= x < 1)
+F(x) = 1 (∀ x >= 1)
+
+P(a <= X <= b) = F(b) - F(a)
+P(0.3 < X < 0.6) = F(0.6) - F(0.3) = (0.6)^{3/2} - (0.3)^{3/2}
