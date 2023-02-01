@@ -1,0 +1,13 @@
+#+title: Readme
+
+* Graphviz example
+#+BEGIN_SRC dot :file example/test-dot.png :exports results
+digraph D {
+  A [shape=circle]
+  B [shape=circle]
+
+  A -> B
+}
+#+END_SRC
+
+#+attr_html: :width 100px

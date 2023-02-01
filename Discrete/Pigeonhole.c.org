@@ -1,0 +1,8 @@
+#+title: Pigeonhole
+#+description: Pigeonhole Princple
+#+latex_header_extra: \hypersetup{colorlinks=true,linkcolor=blue}
+#+author: Aditya Yadav
+
+* Birthday Paradox
+
+

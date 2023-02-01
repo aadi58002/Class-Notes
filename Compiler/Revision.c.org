@@ -1,0 +1,217 @@
+#+title: Revision
+#+description: Basic revision from the classes from previous sem
+#+latex_header_extra: \hypersetup{colorlinks=true,linkcolor=blue}
+#+author: Aditya Yadav
+
+* Grammer Type ( Noam Chomsky Classification )
+[[file:Revision/type_grammer.png]]
+** Type 0 ( unrestricted Grammer )
+1. \alpha -> \beta
+2. \alpha \in (V+T)^{+}
+3. \beta \in (V+T)^{+}
+Example -> AB -> \epsilon
+Not a Example -> \epsilon -> A
+** Type 1 ( Context Sensitive Grammer ) ( CSL )
+1. Must be a Type-0
+2. |\alpha|  \le |\beta|
+Not Example -> AB -> \alpha
+** Type 2 ( Context Free Grammer ) ( CSL )
+1. Must be Type-1
+2. V -> (V+T)^{+}
+** Type 3 ( Regular Grammer )( RG )
+1. Must be Type-2
+2. V => T^{*}  \times V / T^{*} -> Right linear Grammer
+   OR
+   V => V \times T^{*} / T^{*} -> Left linear Grammer
+* Ambigious grammer
+** Defination
+Ambigious grammer -> A grammer which can derive multiple parse trees for an input string it is called a ambigious grammer.
+** Conversion from ambigious to unambigious grammer
+    * Converting a ambigious grammer to unambigious grammer is not always possible.
+    * There is no algorithm for converting unambigious grammer to ambigious grammer.
+    * Ambigious grammers from which ambigity can't be remvoed are known as inherently ambigious grammer.
+    * A language is said to be ambigious if all the grammers that generate that language are ambigious.
+*** By Asssigning priority
+S -> id/S+S/SxS -> Removal Ambiguity
+Priority S -> S+T/T
+         T -> TxF/F
+         F -> id
+The bottom productions has the highest priority and the higher we go the less priority that productions get.
+*** Left factoring
+in the below case the first grammer will cause the compiler to be confused as if a string starting with 'a' comes it will not be sure which of the productions to use.
+Ex-> W = ad
+S -> ab/ac/ad
+to
+S -> aS'
+S' -> b/c/d
+**** Example
+S -> a/b/c/iEtS/iEtSeS
+to
+S -> a/b/c/iEtsP/iEtsSP
+P -> eS/\epsilon
+*** Recursion
+**** Types recursion
+If the grammer contains left recursion then top down parser will go to infinite loop.
+|----------------+-----------------|
+| Left Recursion | Right Recursion |
+|----------------+-----------------|
+| S -> Sa/b      | S -> aS/b       |
+|----------------+-----------------|
+**** Conversion
+A -> Aa/B  ------- It has a recusion part Aa and a non recursion part and we try to seperate them
+to
+A -> BA'
+A' -> aA'/\epsilon
+**** Example
+E -> E+T/T
+T -> T*F/F
+F -> id/(E)
+to
+E -> TE'
+E' -> +TE'/\epsilon
+T -> FT'
+T' -> *FT'/\epsilon
+F -> id/(E)
+* Compiler
+1. Processor can directly take high level language program also but it will take a lot of time, hence to make it faster we use a compiler as the processor will compile or covert the program each time it runs the program but the compiler only converts it only once. 
+2. Compilation in java in compiler is faster than c-compiler as it does coversion up to the intermediate code generation stage only hence each time the program runs these last two stages are executed making to slower than c execution.
+|---------------------+----------+---------------+-----------------+----------+-----------------------------------+----------+--------------------------------+---------------------+----------------------------------+-------------|
+| Language Processing | --HLL--> | Pre Processor | ---Pure HHL---> | Compiler | -----Multi Assembly Language----> | Assebler | ---Multi Relocatable code----> | Linker              | -------Single Relocatable Code-> | Loader      |
+|                     |          |               |                 |          |                                   |          |                                | Cousins of Compiler |                                  | Ready State |
+|---------------------+----------+---------------+-----------------+----------+-----------------------------------+----------+--------------------------------+---------------------+----------------------------------+-------------|
+** Lexical Analyzer
+1. Lexical analyzer will generate a token only when parser asks for it.
+2. First phase of the compiler is called lexical analyzer. It is also called scanner.It will divide the given program into meaningful strings know as token.
+*** Functions
+1. Dividing the program into tokens
+2. It will eliminate the comment lines
+3. It will eliminate the whitespace chracters(tab,\, ,"\n").
+4. It will help in giving error message by providing the line number.
+** Parser
+The process of deriving string from a given grammer is called derivation or parsing
+*** Types of parser
+**** Top down Parser
+These are also called LL(Left to Right,Left most derivation) parsers.
+It start with root or starting symbol and proceeds to children that is String.
+1. Top down parsers use leftmost derivation.
+2. All the parsers perform left most derivation only and none of them gives right of most derivation.
+3. Difficulty with top down parsers is that when a variable has more than 1 choice it has to choose the correct production by backtracing.
+***** Recursive descent Parser (LL(0))
+1. In Recursion descent Parser we use leftmost Derivation.
+2. In Recursion descent Parser we will write one function for every variable
+3. If the grammer contains left Recursion the parser will go into infinite loop.
+4. If the grammer contains sometimes we will get parsing error.
+5. Lot of time is wasted in back tracing so time complexity of Recursion descent Parser is O(2^{n}).
+#+begin_src cpp
+  S(){
+      choose any production S -> x1,x2,x3,x4.....xk of S
+      for(i=1 to k){
+         if (xi is variable) { x1() ;}
+         else if (xi == look ahead symbol) { then increment input pointer;}
+         else { Error {back track} }
+      }
+  }
+#+end_src
+***** Predective Parser (LL(1))
+**** Bottom Up parser
+1. It start from the children or the string and proceeds to root or the starting symbol.
+2. It uses reverse of right most derivation.
+3. The Different with bottom up parser is identifying a substring or handle which will give a required variable to get to the start symbol.
+* Question
+** Q1
+Write a CFG for Language L = { a^{m} | m \ge 1 }
+Ans. S -> aS | a
+** Q2
+Write a CFG for Language L = { a^{m} b^{n} | m,n \ge 1}
+Ans. S-> AB 
+     A-> Aa | a 
+     B-> Bb | b
+** Q3
+How many possible DFA's are there with 2 states X and Y, where X is an initial state over alphabet {a,b}?
+|------+-----+-----|
+| N/NF | X   | Y   |
+|------+-----+-----|
+| X    | a/b | a/b |
+| Y    | a/b | a/b |
+|------+-----+-----|
+Here we can set either X or Y or neither or both as final states so we have to multiple the table result with 4
+ans = 4 * 4 * 4 = 64
+** Q4
+////TO Complete/////
+Draw the parse tree of this statement?
+S -> aS/Sa/a
+W -> aaa
+
+#+BEGIN_SRC dot :file Revision/Q4.png :exports results
+digraph {
+    node [shape=circle, fixedsize=true, width=0.9];
+    edge [fontsize=10];
+    rankdir=TB;
+    "S" [label="S"];
+    "S1" [label="aS"];
+    "S2" [label="Sa"];
+    "S3" [label="a, Invalid"];
+"A11" [label="aaS"];
+"A12" [label="aSa"];
+"A13" [label="aa, Invalid"];
+
+"A21" [label="aSa"];
+"A22" [label="Saa"];
+"A23" [label="aa,Invalid"];
+
+"A31" [label="SaS"];
+"A32" [label="Saa"];
+"A33" [label="aa,Invalid"];
+
+"A41" [label="SaS"];
+"A42" [label="Saa"];
+"A43" [label="aa,Invalid"];
+
+"A44" [label="aSa"];
+"A45" [label="aaS"];
+"A46" [label="aaa, Invalid"];
+
+"A47" [label="Saa"];
+"A48" [label="aSa"];
+"A49" [label="aaa, Invalid"];
+
+"A410" [label="aaS"];
+"A411" [label="SaS"];
+"A412" [label="aaa, Invalid"];
+
+
+"S" -> "S1" [label="aS"];
+"S" -> "S2" [label="Sa"];
+"S" -> "S3" [label="a"];
+
+"S1" -> "A11" [label="aS"];
+"S1" -> "A12" [label="Sa"];
+"S1" -> "A13" [label="a"];
+
+"S2" -> "A21" [label="aS"];
+"S2" -> "A22" [label="Sa"];
+"S2" -> "A23" [label="a"];
+
+"S3" -> "A31" [label="Sa"];
+"S3" -> "A32" [label="aS"];
+"S3" -> "A33" [label="a"];
+
+"A11" -> "A41" [label="Sa"];
+"A11" -> "A42" [label="aS"];
+"A11" -> "A43" [label="a"];
+
+"A12" -> "A44" [label="Sa"];
+"A12" -> "A45" [label="aS"];
+"A12" -> "A46" [label="a"];
+
+"A13" -> "A47" [label="Sa"];
+"A13" -> "A48" [label="aS"];
+"A13" -> "A49" [label="a"];
+
+"A21" -> "A410" [label="Sa"];
+"A21" -> "A411" [label="aS"];
+}
+#+END_SRC
+
+#+RESULTS:
+[[file:Revision/Q4.png]]

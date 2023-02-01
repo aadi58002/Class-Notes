@@ -1,0 +1,53 @@
+#+title: Ip
+#+description: IPv4 details
+#+latex_header_extra: \hypersetup{colorlinks=true,linkcolor=blue}
+#+author: Aditya Yadav
+
+* Octates
+example - 132.24.1.10 -> By the first octet we can tell this is a Class B Address
+Syntax - <Ist octet>.<IInd octet>.<IIIrd octet>.<IVth octet>
+|-----------------+-------------------+-------------------+-------------------+-------------------+--------------------+---------------|
+|                 | I                 | II                | III               | IV                |                    |               |
+|-----------------+-------------------+-------------------+-------------------+-------------------+--------------------+---------------|
+| Name            | 0-255             | 0-255             | 0-255             | 0-255             | Range of Ist octet |  network Mask |
+|-----------------+-------------------+-------------------+-------------------+-------------------+--------------------+---------------|
+| Class A address | Network I/D       | Host I/D          | Host I/D          | Host I/D          |              1-127 |     255.0.0.0 |
+| Class B address | Network I/D       | Network I/D       | Host I/D          | Host I/D          |            128-191 |   255.255.0.0 |
+| Class C address | Network I/D       | Network I/D       | Network I/D       | Host I/D          |            192-223 | 255.255.255.0 |
+| Class D address | Not too much info | Not too much info | Not too much info | Not too much info |            224-239 |               |
+| Class E address | Not too much info | Not too much info | Not too much info | Not too much info |            240-255 |               |
+|-----------------+-------------------+-------------------+-------------------+-------------------+--------------------+---------------|
+
+No of use able devices for class A after the 2**8 - 2 network is 2**24 - 2
+No of use able devices for class A after the 2**16 - 2 network is 2**16 - 2
+No of use able devices for class A after the 2**24 - 2 network is 2**8 - 2
+
+Two address in each of the I/D groupes is reserved due to two Network ->
+Network Network -> Address reserved to give to the router which is conneting to the outside world ( between Network I/D and Host I/D ) Ex-> in B class -> 130.24.0.0 , in A class -> 30.0.0.0.
+Broadcast Network -> To send the package to all the connected devices. Ex -> in B class -> 130.24.255.255 , in A class -> 30.255.255.255.
+* IPv4 subnetting & supernetting
+Given, 193.1.1.0/24 6 subnets
+Class C IPv4 address
+DM: 255.255.255.0
+|-------------+-------------+-------------+--------------------------------------------+-----------------------|
+|    11000000 |    00000001 |    00000001 |                                   00000000 |                       |
+|-------------+-------------+-------------+--------------------------------------------+-----------------------|
+| Network I/D | Network I/D | Network I/D |                                   Host I/D |                       |
+|-------------+-------------+-------------+--------------------------------------------+-----------------------|
+|             |             |             | Borrow the first 3 bits for the subnetting |                       |
+|-------------+-------------+-------------+--------------------------------------------+-----------------------|
+|    11111111 |    11111111 |    11111111 |                                   00000000 | Network mask          |
+|    00000000 |    00000000 |    00000000 |                                   11111111 | Host mask             |
+|    11111111 |    11111111 |    11111111 |                                   11100000 | SM  - 255.255.255.224 |
+|-------------+-------------+-------------+--------------------------------------------+-----------------------|
+* Quesiton 1
+Determine the subnet information fo
+172.25.114.25
+Network mask - 255.225.0.0/16
+Subnet mask - 255.255.255.192/26
+
+Class - B,
+Network I/D 172.25
+Host I/D 114.25
+* Question 2
+Given a Ip address 172.30.1.33 and the mask as 255.255.255.0  compute the subnetting information.

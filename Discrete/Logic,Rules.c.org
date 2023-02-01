@@ -1,0 +1,38 @@
+#+title: Logic,Rules
+#+description: Logic,Rules class for discrete maths
+#+latex_header_extra: \hypersetup{colorlinks=true,linkcolor=blue}
+#+author: Aditya Yadav
+
+* Propositions
+A logical statement which either be true or false but not both.
+
+1. Negation (~p, p', !p, \leg p)
+2. Conjunction (p \lor q)
+3. Disjunction (p \land q)
+4. XOR
+
+** Logical gates
+[[file:Logic,Rules/Gates.png]]
+** Conditional
+p \implies Hypothesis
+q \implies Conclusion
+|---+---+--------------|
+| p | q | p \implies q |
+|---+---+--------------|
+| F | F | T            |
+| F | T | T            |
+| T | F | F            |
+| T | T | T            |
+|---+---+--------------|
+** Quantify
+* Example
+|---+---+---+----------------------|
+| p | q | r | p \lor q \imples \neg r |
+|---+---+---+----------------------|
+| T | T | T | F                    |
+| T | T | F | T                    |
+| T | F | T | F                    |
+| T | F | F | T                    |
+|---+---+---+----------------------|
+
+** Equivalence Relation

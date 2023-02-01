@@ -1,0 +1,64 @@
+#+title: OSI
+#+description: OSI Model details
+#+latex_header_extra: \hypersetup{colorlinks=true,linkcolor=blue}
+#+author: Aditya Yadav
+
+* OSI Model
+|---------------+-----------------------+---------------+-----------------------------+-----------------------+-------------------------|
+|               | Sender                | Uses          |                             | Receiver              |                         |
+|---------------+-----------------------+---------------+-----------------------------+-----------------------+-------------------------|
+| ---           | 1. Application Layer  |               | <- Application Protocol ->  | 7. Application Layer  | APDU (Data)             |
+| Higher Layers | 2. Presentation Layer |               | <- Presentation Protocol -> | 6. Presentation Layer | PPDU (Header)           |
+|               | 3. Session Layer      |               | <- Session Protocol ->      | 5. Session Layer      | SPDU (Header)           |
+| ---           | 4. Transport Layer    | Gateway       | <- Transport Protocol ->    | 4. Transport Layer    | TPDU (Header)           |
+| ---           | 5. Network Layer      | Router        | <-----------NL----------->  | 3. Network Layer      | Packer (Header)         |
+| Lower Layers  | 6. Data Link Layer    | Bridge/Switch | <-----------DLL-----------> | 2. Data Link Layer    | Frame (Header + Trader) |
+| ---           | 7. Physical Layer     | Hub/Routers   | <-----------PL----------->  | 1. Physical Layer     | Bits                    |
+|               |                       |               | -----Bits Tranfer ------>   |                       |                         |
+|---------------+-----------------------+---------------+-----------------------------+-----------------------+-------------------------|
+Higher Layers = End - End Connectivity
+Lower Layers = Internetworking Layers -> Part of the Connection Subnet
+* Layers
+** Physical Layer
+1. Representation of Bits (which means electrical signals like voltage and current or wireless waves or light waves).
+2. Physical charactersticks of interface (Guided (wired) or Unguided(Wireless))
+3. Topology of the network.
+4. Synchronization of bits.
+5. Transmission modes  (Simplex , half-duplex, ful-duples).
+6. Data Rates.
+** Data Link Layer
+1. Medium access control (MAC).
+2. Framing.
+3. Physical address ( MAC address, Hardware address )
+4. Error control ( Error detection & Error correction )
+5. Flow Control ( Sliding window (go back and selective ///////////////// ), Stop wait )
+** Network Layer
+1. Routing - static and dynamic
+2. Logical addressing ( IP address )
+** Transport Layer
+1. Segmentation and reassembly of data.
+2. Error Control.
+3. Flow Control.
+** Session Layer
+1. Dialog management
+2. Synchronization
+3. Token Management
+** Presentation Layer
+1. Translation
+2. Encryption
+3. Compression
+** Application Layer
+1. File tranfer access and management ( ex. FTP, TFTP, HTTP ).
+2. Mail Service ( ex. SMTP )
+3. Directory service (DNS)
+* Comparision of OSI and TCP/IP reference model
+** Similarities
+1. Both are based on the concept stack of independent protocols.
+2. Functionality of layers are similar.
+3. There is hierarical approach
+** Differences
+1. Protocols in OSI are better hidden in TCP/IP.
+2. Protocols in OSI can be easily replaced with technology changes in comparision to TCP/IP.
+3. OSI model was developed before the protocols were invented where as TCP/IP model is build over the existing protocols.
+4. No of layer in OSI has 7 layers and TCP/IP has 5 layers.
+5. OSI model supports both connection orientited and connectionless communication in the network layer but in the transport layer it only support connection orientited supported.
